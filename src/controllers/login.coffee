@@ -6,8 +6,7 @@ angular.module('swAuth')
             $location.path('/')
 
         fail = (response) ->
-            errorMsg =  response.data.responseStatus?.message or response.data
-            $scope.loginError = errorMsg
+            $scope.loginErrors = response.data.errors
 
         $scope.logIn = ->
             loginPromise = auth.login(
