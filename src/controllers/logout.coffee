@@ -1,6 +1,14 @@
 angular.module('swAuth')
-    .controller 'AuthLogoutCtrl', ($scope, $location, auth, authConfig) ->
+    .controller 'AuthLogoutCtrl', ($scope, $location, $log, auth, authConfig) ->
         $scope.header = authConfig.getSystemLabel()
 
-        auth.logout().then ->
-            $location.path('/')
+        $scope.inProcess = true
+        auth.logout().then(
+            ->
+                $scope.inProcess = false
+                $location.path('/')
+            (response) ->
+                $scope.inProcess = false
+                $log.error(response)
+                $scope.logoutError = "Logout error"
+        )

@@ -6,9 +6,11 @@ angular.module('swAuth')
             $location.path('/')
 
         fail = (response) ->
-            $scope.loginErrors = response.data.errors
+            $scope.loginErrors = response.data?.errors or ['Ошибка аутентификации']
 
         $scope.logIn = ->
+            $scope.loginErrors = undefined
+
             loginPromise = auth.login(
                 $scope.login,
                 $scope.password,
