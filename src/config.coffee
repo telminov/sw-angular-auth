@@ -6,6 +6,7 @@ angular.module('swAuth')
             serverLoginUrl: '/login/'
             serverLogoutUrl: '/logout/'
             serverUserInfoUrl: '/current_user/'
+            serverCSRFUrl: '/get_csrf/'
             appLoginUrl: '/login/'
         }
 
@@ -17,6 +18,7 @@ angular.module('swAuth')
                     getServerLoginUrl: -> config.serverLoginUrl
                     getServerLogoutUrl: -> config.serverLogoutUrl
                     getServerUserInfoUrl: -> config.serverUserInfoUrl
+                    getServerCSRFUrl: -> config.serverCSRFUrl
                     getAppLoginUrl: -> config.appLoginUrl
                 }
 
@@ -34,6 +36,9 @@ angular.module('swAuth')
 
             setServerUserInfoUrl: (url) ->
                 config.serverUserInfoUrl = url
+
+            setServerCSRFUrl: (url) ->
+                config.serverCSRFUrl = url
 
             setAppLoginUrl: (url) ->
                 config.appLoginUrl = url

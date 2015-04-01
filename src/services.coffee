@@ -21,17 +21,26 @@ angular.module('swAuth')
         auth.getLoginUrl = ->
             return authConfig.getAppLoginUrl()
 
+        auth.getCSRF = ->
+            csrfUrl = authConfig.getServerCSRFUrl()
+            return $http.get(csrfUrl).then (response) ->
+                return response.data
 
         auth.login = (username, password, makePostSubmit) ->
-            loginUrl = authConfig.getServerLoginUrl()
-            loginPromise = $http(
-                method: "POST"
-                url: loginUrl
-                data:
-                    username: username
-                    password: password
-                withCredentials: true
-            )
+            csrfPromise = auth.getCSRF()
+
+            # after getting csrf token make login request
+            loginPromise = csrfPromise.then (csrf) ->
+                loginUrl = authConfig.getServerLoginUrl()
+                loginPromise = $http(
+                    method: "POST"
+                    url: loginUrl
+                    data:
+                        csrfmiddlewaretoken: csrf
+                        username: username
+                        password: password
+                    withCredentials: true
+                )
 
             # after login go to user info method
             loginPromise = loginPromise.then ->
