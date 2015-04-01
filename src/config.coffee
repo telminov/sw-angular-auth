@@ -8,6 +8,7 @@ angular.module('swAuth')
             serverUserInfoUrl: '/api/auth/current_user/'
             serverCSRFUrl: '/api/auth/get_csrf/'
             appLoginUrl: '/login/'
+            freeUrls: []
         }
 
         return {
@@ -20,6 +21,7 @@ angular.module('swAuth')
                     getServerUserInfoUrl: -> config.serverAddress + config.serverUserInfoUrl
                     getServerCSRFUrl: -> config.serverAddress + config.serverCSRFUrl
                     getAppLoginUrl: -> config.appLoginUrl
+                    getFreeUrls: -> config.freeUrls
                 }
 
             setSystemLabel: (label) ->
@@ -42,4 +44,7 @@ angular.module('swAuth')
 
             setAppLoginUrl: (url) ->
                 config.appLoginUrl = url
+
+            setFreeUrls: (freeUrls) ->
+                config.freeUrls = freeUrls
         }

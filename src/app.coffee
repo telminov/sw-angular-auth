@@ -20,7 +20,7 @@ angular.module('swAuth', [
         }
 
 
-    .run ($rootScope, $location, auth, AUTH_UPDATE_USER, AUTH_SERVER_REJECT) ->
+    .run ($rootScope, $location, auth, authConfig, AUTH_UPDATE_USER, AUTH_SERVER_REJECT) ->
         # subscribe on url changing
         $rootScope.$on '$routeChangeStart', (scope, next, current) ->
             # save origin path
@@ -29,7 +29,7 @@ angular.module('swAuth', [
                 nextPath = next.$$route.originalPath
 
             # redirect not authorized user to login page
-            if not auth.isAuthenticated()
+            if not auth.isAuthenticated() and nextPath not in authConfig.getFreeUrls()
                 loginUrl = auth.getLoginUrl()
 
                 # skip redirection if we are going to login page

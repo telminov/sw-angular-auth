@@ -1,5 +1,5 @@
 angular.module('swAuth')
-    .service 'auth', ($http, $rootScope, $cookieStore, authConfig, AUTH_UPDATE_USER) ->
+    .service 'auth', ($http, $rootScope, $cookieStore, $location, authConfig, AUTH_UPDATE_USER) ->
         auth = this
 
         auth.getUser = ->
@@ -73,5 +73,8 @@ angular.module('swAuth')
                 auth.clearCurrentUser()
 
             return logoutPromise
+
+        auth.isLoginPage = ->
+            return $location.path() == authConfig.getAppLoginUrl()
 
         return
