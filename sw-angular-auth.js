@@ -1,0 +1,6 @@
+(function() {
+  angular.module('swUtils', ['ngCookies', 'ngRoute']);
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb2ZmZWUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFBQSxFQUFBLE9BQU8sQ0FBQyxNQUFSLENBQWUsU0FBZixFQUEwQixDQUN0QixXQURzQixFQUV0QixTQUZzQixDQUExQixDQUFBLENBQUE7QUFBQSIsImZpbGUiOiJzdy1hbmd1bGFyLWF1dGguanMiLCJzb3VyY2VzQ29udGVudCI6WyJhbmd1bGFyLm1vZHVsZSgnc3dVdGlscycsIFtcbiAgICAnbmdDb29raWVzJ1xuICAgICduZ1JvdXRlJ1xuXSkiXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=

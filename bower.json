@@ -1,0 +1,19 @@
+{
+  "name": "sw-angular-auth",
+  "main": "./sw-angular-auth.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/telminov/sw-angular-auth",
+  "authors": [
+    "Telminov Sergey <telminov@soft-way.biz>"
+  ],
+  "description": "Soft Way company AngularJS authentication utils",
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": ""
+  }
+}
