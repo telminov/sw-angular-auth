@@ -7,8 +7,12 @@ var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 
+var paths = {
+  scripts: ['./src/**/*.coffee'],
+};
+
 gulp.task('coffee', function() {
-    gulp.src('./src/*.coffee')
+    gulp.src(paths.scripts)
         .pipe(sourcemaps.init())
         .pipe(coffee().on('error', gutil.log))
         .pipe(concat('sw-angular-auth.js'))
@@ -26,7 +30,7 @@ gulp.task('compress', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('./src/*.coffee', ['coffee']);
+    gulp.watch(paths.scripts, ['coffee']);
 });
 
 gulp.task('default', ['coffee', 'compress']);

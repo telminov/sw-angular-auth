@@ -7,18 +7,16 @@ angular.module('swAuth', [
     .constant('AUTH_SERVER_REJECT', 'sw_auth_service_server_401_or_403_reject')
 
     .config ($httpProvider) ->
-        $httpProvider.responseInterceptors.push('securityInterceptor')
+        $httpProvider.interceptors.push('authInterceptor')
 
     # broadcast of 401 or 403 http status
-    .provider 'securityInterceptor', ->
+    .factory 'authInterceptor', ($location, $q, $rootScope, AUTH_SERVER_REJECT) ->
         return {
-            $get: ($location, $q, $rootScope, AUTH_SERVER_REJECT) ->
-                return (promise) ->
-                    promise.then null, (response) ->
-                        if response.status == 401 or response.status == 403
-                            $rootScope.$broadcast AUTH_SERVER_REJECT, response.status, response.data
+            responseError: (response) ->
+                if response?.status == 401 or response?.status == 403
+                    $rootScope.$broadcast AUTH_SERVER_REJECT, response.status, response.data
+                return $q.reject(response)
 
-                        return $q.reject(response)
         }
 
 

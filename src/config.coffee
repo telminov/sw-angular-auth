@@ -1,12 +1,12 @@
 angular.module('swAuth')
-    .provider 'authConfigProvider', ->
+    .provider 'authConfig', ->
         config = {
             systemLabel: 'System Label'
             serverAddress: '/server_url'
-            serverLoginUrl: '/login/'
-            serverLogoutUrl: '/logout/'
-            serverUserInfoUrl: '/current_user/'
-            serverCSRFUrl: '/get_csrf/'
+            serverLoginUrl: '/api/auth/login/'
+            serverLogoutUrl: '/api/auth/logout/'
+            serverUserInfoUrl: '/api/auth/current_user/'
+            serverCSRFUrl: '/api/auth/get_csrf/'
             appLoginUrl: '/login/'
         }
 
@@ -15,10 +15,10 @@ angular.module('swAuth')
                 {
                     getSystemLabel: -> config.systemLabel
                     getServerAddress: -> config.serverAddress
-                    getServerLoginUrl: -> config.serverLoginUrl
-                    getServerLogoutUrl: -> config.serverLogoutUrl
-                    getServerUserInfoUrl: -> config.serverUserInfoUrl
-                    getServerCSRFUrl: -> config.serverCSRFUrl
+                    getServerLoginUrl: -> config.serverAddress + config.serverLoginUrl
+                    getServerLogoutUrl: -> config.serverAddress + config.serverLogoutUrl
+                    getServerUserInfoUrl: -> config.serverAddress + config.serverUserInfoUrl
+                    getServerCSRFUrl: -> config.serverAddress + config.serverCSRFUrl
                     getAppLoginUrl: -> config.appLoginUrl
                 }
 
