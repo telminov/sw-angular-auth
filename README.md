@@ -100,3 +100,9 @@ and logout.html
     Exiting...
 </p>
 ```
+
+For working with django your app maybe need
+```
+.config ($httpProvider) ->
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+```
