@@ -5,7 +5,7 @@ Install via bower
 bower install sw-angular-auth --save
 ```
 
-Add at scripts
+Add at index.html
 ```
 <script src="bower_components/sw-angular-auth/sw-angular-auth.min.js"></script>
 ```
@@ -18,3 +18,4 @@ angular.module('myApp', [
     ...
 ])
 ```
+
