@@ -46,7 +46,7 @@ angular.module('myApp').config ($routeProvider) ->
 Add config on start app
 ```
 angular.module('myApp').config (authConfigProvider, config) ->
-    authConfigProvider.setSystemLabel('parkKeeper')
+    authConfigProvider.setSystemLabel('My App Label')
     authConfigProvider.setServerAddress(config.serverAddress)
     authConfigProvider.setFreeUrls([])
 ```
